@@ -1,17 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const playButton = document.getElementById('play-button');
-  const audio = document.getElementById('bg-music');
-
-  playButton.addEventListener('click', () => {
-    audio.play().catch(error => {
-      // Handle the error if audio playback fails
-      console.error('Audio playback failed:', error);
-    });
-  });
-});
 
 // Animation Timeline
 const animationTimeline = () => {
+  // Get the audio element by its ID
+  const audio = document.getElementById('bg-music');
+
+  // Play the audio
+  audio.play();
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];

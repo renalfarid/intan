@@ -305,8 +305,9 @@ const resolveFetch = () => {
 
 resolveFetch().then(animationTimeline());
 
-// Get the audio element by its ID
+const playButton = document.getElementById('play-button');
 const audio = document.getElementById('bg-music');
 
-// Play the audio
-audio.play();
+playButton.addEventListener('click', () => {
+  audio.play();
+});

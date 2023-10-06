@@ -1,11 +1,27 @@
+// JavaScript
+// Wrap the native DOM audio element play function and handle any autoplay errors
+Audio.prototype.play = (function(play) {
+  return function () {
+    var audio = this,
+        args = arguments,
+        promise = play.apply(audio, args);
+    if (promise !== undefined) {
+      promise.catch(_ => {
+        // Autoplay was prevented. This is optional, but add a button to start playing.
+        var el = document.createElement("button");
+        el.innerHTML = "Play";
+        el.addEventListener("click", function(){play.apply(audio, args);});
+        this.parentNode.insertBefore(el, this.nextSibling)
+      });
+    }
+  };
+  })(Audio.prototype.play);
+  
+  // Try automatically playing our audio via script. This would normally trigger and error.
+  document.getElementById('bg-music').play()
 
 // Animation Timeline
 const animationTimeline = () => {
-  // Get the audio element by its ID
-  const audio = document.getElementById('bg-music');
-  audio.muted = true;
-  // Play the audio
-  audio.play();
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
@@ -293,10 +309,6 @@ const fetchData = () => {
             document
               .getElementById(customData)
               .setAttribute("src", data[customData]);
-              const audio = document.getElementById('bg-music');
-              audio.muted = false;
-              // Play the audio
-              audio.play();
           } else {
             document.getElementById(customData).innerText = data[customData];
           }

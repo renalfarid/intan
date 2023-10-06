@@ -305,9 +305,15 @@ const resolveFetch = () => {
 
 resolveFetch().then(animationTimeline());
 
-const playButton = document.getElementById('play-button');
-const audio = document.getElementById('bg-music');
+document.addEventListener('DOMContentLoaded', () => {
+  // Your JavaScript code here
+  const playButton = document.getElementById('play-button');
+  const audio = document.getElementById('bg-music');
 
-playButton.addEventListener('click', () => {
-  audio.play();
+  playButton.addEventListener('click', () => {
+    audio.play();
+  });
+
+  console.log('Button and audio elements:', playButton, audio);
+
 });

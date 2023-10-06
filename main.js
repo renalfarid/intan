@@ -308,6 +308,7 @@ resolveFetch().then(animationTimeline());
 const audio = document.getElementById('bg-music');
 audio.play();
 
+const playButton = document.getElementById('play-button');
 playButton.addEventListener('click', () => {
   console.log('Button clicked'); // Add this line
   audio.play();

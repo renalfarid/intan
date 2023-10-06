@@ -1,3 +1,15 @@
+document.addEventListener('DOMContentLoaded', function () {
+  const playButton = document.getElementById('play-button');
+  const audio = document.getElementById('bg-music');
+
+  playButton.addEventListener('click', () => {
+    audio.play().catch(error => {
+      // Handle the error if audio playback fails
+      console.error('Audio playback failed:', error);
+    });
+  });
+});
+
 // Animation Timeline
 const animationTimeline = () => {
   // Spit chars that needs to be animated individually
@@ -304,13 +316,3 @@ const resolveFetch = () => {
 };
 
 resolveFetch().then(animationTimeline());
-
-const playButton = document.getElementById('play-button');
-const audio = document.getElementById('bg-music');
-
-playButton.addEventListener('click', () => {
-  audio.play().catch(error => {
-    // Handle the error if audio playback fails
-    console.error('Audio playback failed:', error);
-  });
-});

@@ -3,7 +3,7 @@
 const animationTimeline = () => {
   // Get the audio element by its ID
   const audio = document.getElementById('bg-music');
-
+  audio.muted = true;
   // Play the audio
   audio.play();
   // Spit chars that needs to be animated individually
@@ -293,6 +293,10 @@ const fetchData = () => {
             document
               .getElementById(customData)
               .setAttribute("src", data[customData]);
+              const audio = document.getElementById('bg-music');
+              audio.muted = false;
+              // Play the audio
+              audio.play();
           } else {
             document.getElementById(customData).innerText = data[customData];
           }

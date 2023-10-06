@@ -305,11 +305,12 @@ const resolveFetch = () => {
 
 resolveFetch().then(animationTimeline());
 
-const audio = document.getElementById('bg-music');
-audio.play();
-
 const playButton = document.getElementById('play-button');
+const audio = document.getElementById('bg-music');
+
 playButton.addEventListener('click', () => {
-  console.log('Button clicked'); // Add this line
-  audio.play();
+  audio.play().catch(error => {
+    // Handle the error if audio playback fails
+    console.error('Audio playback failed:', error);
+  });
 });
